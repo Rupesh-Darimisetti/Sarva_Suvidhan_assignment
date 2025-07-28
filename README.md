@@ -12,9 +12,13 @@
 
  python3 install -r requirements.txt
 ```
+- create kapa_db in posgres dbms
 - now run the following command to run
+
 ```py 
- python manage.py runserver
+    python manage.py makemigrations
+    python manage.py migrations
+    python manage.py runserver
 ```
 ## The technologies and tech stack used.
 
