@@ -30,11 +30,13 @@ def create_bogie_checksheet(request):
         
         if form.is_valid():
             form.save()
-            return redirect('list')
-        else:
-            form = BogieChecksheetForm()
-        return render(request,'create.html',{'form':form})
-    
+        #     return redirect('list')
+        # else:
+        #     form = BogieChecksheetForm()
+        #     return render(request,'create.html',{'form':form})
+            return Response({"message": "BogieChecksheet created", "data": serializer.data}, status=status.HTTP_201_CREATED)
+        return Response(form.errors, status=status.HTTP_400_BAD_REQUEST)
+
 # list view
 def bogie_checksheet_list(request):
     bogie_checksheet = BogieChecksheet.objects.all()

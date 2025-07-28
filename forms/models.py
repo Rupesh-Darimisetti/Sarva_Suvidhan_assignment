@@ -37,36 +37,34 @@ class BogieChecksheet(models.Model):
         ('Good', 'Good'),
         ('otherBlaster', 'Other'),
     ]
-    id = models.CharField(max_length=20,primary_key=True)
-    BogieNumber = models.CharField(max_length=100, unique="Truename=Bogie No")
-    MakerYearBuilt = models.CharField(max_length=100, name="Malker & Year Built")
-    IncomingDivDate = models.DateField(name="Incoming Div. & Date")
-    DeflictOfComponents = models.JSONField( name="Deflict of Components (if any)")
-    DateofIOH = models.DateField(name="Date of IOH")
-    BogieFieldCodition= models.CharField(
-        max_length=100, choices=BogieFieldCodition, default='Good', name="Bogie Field Condition"
-    )
-    Blaster = models.CharField(max_length=100, name="Blaster",choices=BlasterChoices, default='Good')
-    BlasterSuspensionBracket = models.CharField(max_length=100, name="Blaster Suspension Bracket", choices=BlasterChoices, default='Good')
-    LowerSpringSeat = models.CharField(max_length=100, name="Lower Spring Seat", choices=BlasterChoices, default='Good')
-    AxleGuide = models.CharField(max_length=100, name="Axle Guide", choices=BlasterChoices, default='Good')
-    AxleGuideAssembly = models.CharField(max_length=100, name="Axle Guide Assembly", choices=BlasterChoices, default='Good')
-    ProtectiveTubes = models.CharField(max_length=100, name="Protective Tubes", choices=BlasterChoices, default='Good')
-    AnchorLink = models.CharField(max_length=100, name="Anchor Link", choices=BlasterChoices, default='Good')
-    SideBearer = models.CharField(max_length=100, name="Side Bearer", choices=BlasterChoices, default='Good')
+    # id = models.CharField(max_length=20,primary_key=True, auto_created=True)
+    bogie_number = models.CharField(max_length=100, unique="Truename=Bogie No")
+    maker_year_built = models.CharField(max_length=100)
+    incoming_div_date = models.DateField()
+    deflict_of_components = models.JSONField( )
+    date_of_IOH = models.DateField()
+    bogie_field_codition= models.CharField(max_length=100, choices=BogieFieldCodition, default='Good'    )
+    blaster = models.CharField(max_length=100,choices=BlasterChoices, default='Good')
+    blaster_suspension_bracket = models.CharField(max_length=100, choices=BlasterChoices, default='Good')
+    lower_spring_seat = models.CharField(max_length=100, choices=BlasterChoices, default='Good')
+    axle_guide = models.CharField(max_length=100,  choices=BlasterChoices, default='Good')
+    axle_guide_assembly = models.CharField(max_length=100, choices=BlasterChoices, default='Good')
+    protective_tubes = models.CharField(max_length=100, choices=BlasterChoices, default='Good')
+    anchor_link = models.CharField(max_length=100,  choices=BlasterChoices, default='Good')
+    side_bearer = models.CharField(max_length=100,  choices=BlasterChoices, default='Good')
     BMBCChecksheetChoices = [
         ('Good', 'Good'),
         ('Worn out', 'Worn out'),
         ('Damaged', 'Damaged'),
         ('OtherBMBCChecksheet', 'Other'),
     ]
-    CylinderBodyDomeCover = models.CharField(max_length=100, name="Cylinder Body & Dome Cover", choices=BMBCChecksheetChoices, default='Good')
-    PistonTrunnionBody = models.CharField(max_length=100, name="Piston Trunnion Body", choices=BMBCChecksheetChoices, default='Good')
-    AdjustingTubeandScrew = models.CharField(max_length=100, name="Adjusting Tube and Screw", choices=BMBCChecksheetChoices, default='Good')
-    PlungerSpring = models.CharField(max_length=100, name="Plunger Spring", choices=BMBCChecksheetChoices, default='Good')
-    TreeBoltHexNut = models.CharField(max_length=100, name="Tree Bolt Hex Nut", choices=BMBCChecksheetChoices, default='Good')
-    PawlandPawlSpring = models.CharField(max_length=100, name="Pawl and Pawl Spring", choices=BMBCChecksheetChoices, default='Good')
-    DustExcluder = models.CharField(max_length=100, name="Dust Excluder", choices=BMBCChecksheetChoices, default='Good')
+    cylinder_body_dome_cover = models.CharField(max_length=100,  choices=BMBCChecksheetChoices, default='Good')
+    piston_trunnion_body = models.CharField(max_length=100,  choices=BMBCChecksheetChoices, default='Good')
+    adjusting_tubeand_screw = models.CharField(max_length=100, choices=BMBCChecksheetChoices, default='Good')
+    plunger_spring = models.CharField(max_length=100,  choices=BMBCChecksheetChoices, default='Good')
+    tree_bolt_hexNut = models.CharField(max_length=100,  choices=BMBCChecksheetChoices, default='Good')
+    pawl_pawl_spring = models.CharField(max_length=100,  choices=BMBCChecksheetChoices, default='Good')
+    dust_excluder = models.CharField(max_length=100, choices=BMBCChecksheetChoices, default='Good')
         
     
 

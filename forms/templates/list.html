@@ -10,40 +10,43 @@
     {%if bogie_checksheet%}
     {%for form in bogie_checksheet%}
    <div class="card">
+    {% comment %} {{form.JSON()}} {% endcomment %}
         <h3>Bogie: {{ form.BogieNumber }}</h3>
         <p><strong>ID:</strong> {{ form.id }}</p>
-        <p><strong>Maker &amp; Year Built:</strong> {{ form.MakerYearBuilt }}</p>
-        <p><strong>Incoming Div. &amp; Date:</strong> {{ form.IncomingDivDate }}</p>
-        <p><strong>Date of IOH:</strong> {{ form.DateofIOH }}</p>
-        <p><strong>Bogie Field Condition:</strong> {{ form.BogieFieldCodition }}</p>
-        <p><strong>Blaster:</strong> {{ form.Blaster }}</p>
-        <p><strong>Blaster Suspension Bracket:</strong> {{ form.BlasterSuspensionBracket }}</p>
-        <p><strong>Lower Spring Seat:</strong> {{ form.LowerSpringSeat }}</p>
-        <p><strong>Axle Guide:</strong> {{ form.AxleGuide }}</p>
-        <p><strong>Axle Guide Assembly:</strong> {{ form.AxleGuideAssembly }}</p>
-        <p><strong>Protective Tubes:</strong> {{ form.ProtectiveTubes }}</p>
-        <p><strong>Anchor Link:</strong> {{ form.AnchorLink }}</p>
-        <p><strong>Side Bearer:</strong> {{ form.SideBearer }}</p>
-        <p><strong>Cylinder Body &amp; Dome Cover:</strong> {{ form.CylinderBodyDomeCover }}</p>
-        <p><strong>Piston Trunnion Body:</strong> {{ form.PistonTrunnionBody }}</p>
-        <p><strong>Adjusting Tube and Screw:</strong> {{ form.AdjustingTubeandScrew }}</p>
-        <p><strong>Plunger Spring:</strong> {{ form.PlungerSpring }}</p>
-        <p><strong>Tree Bolt Hex Nut:</strong> {{ form.TreeBoltHexNut }}</p>
-        <p><strong>Pawl and Pawl Spring:</strong> {{ form.PawlandPawlSpring }}</p>
-        <p><strong>Dust Excluder:</strong> {{ form.DustExcluder }}</p>
-        <p><strong>Deflict of Components:</strong> {{ form.DeflictOfComponents }}</p>
-    
+        <p><strong>Maker &amp; Year Built:</strong> {{ form.maker_year_built }}</p>
+        <p><strong>Incoming Div. &amp; Date:</strong> {{ form.incoming_div_date }}</p>
+        <p><strong>Deflict of Components:</strong> {{ form.deflict_of_components }}</p>
+        <p><strong>Date of IOH:</strong> {{ form.date_of_IOH }}</p>
+        <hr/>
+        <h2>Bogie Checksheet</h2>
+        <p><strong>Bogie Field Condition:</strong> {{ form.bogie_field_codition }}</p>
+        <p><strong>Blaster:</strong> {{ form.blaster }}</p>
+        <p><strong>Blaster Suspension Bracket:</strong> {{ form.blaster_suspension_bracket }}</p>
+        <p><strong>Lower Spring Seat:</strong> {{ form.lower_spring_seat }}</p>
+        <p><strong>Axle Guide:</strong> {{ form.axle_guide }}</p>
+        <p><strong>Axle Guide Assembly:</strong> {{ form.axle_guide_assembly }}</p>
+        <p><strong>Protective Tubes:</strong> {{ form.protective_tubes }}</p>
+        <p><strong>Anchor Link:</strong> {{ form.anchor_link }}</p>
+        <p><strong>Side Bearer:</strong> {{ form.side_bearer }}</p>
+        <hr/>
+        <h2>BMBC Checksheet</h2>
+        <p><strong>Cylinder Body &amp; Dome Cover:</strong> {{ form.cylinder_body_dome_cover }}</p>
+        <p><strong>Piston Trunnion Body:</strong> {{ form.piston_trunnion_body }}</p>
+        <p><strong>Adjusting Tube and Screw:</strong> {{ form.adjusting_tube_screw }}</p>
+        <p><strong>Plunger Spring:</strong> {{ form.plunger_spring }}</p>
+        <p><strong>Tree Bolt Hex Nut:</strong> {{ form.tree_bolt_hexNut }}</p>
+        <p><strong>Pawl and Pawl Spring:</strong> {{ form.pawl_pawl_spring }}</p>
+        <p><strong>Dust Excluder:</strong> {{ form.dust_excluder }}</p>
+
         <p>
-            <a href="{%url 'update' bogie.pk%}" class="btn btn-success btn-sm">Edit</a>
+            <a href="{%url 'update' form.pk%}" class="btn btn-success btn-sm">Edit</a>
             <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal" data-id="{{bogie.pk}}">Delete</button>
         </p>
 
       </div>
      {%endfor%}
      {%else%} 
-    <p>
-    <td colspan="6"class="text-center">No Bogie Checklist found ...</td>
-    </p>
+    <p class="text-center">No Bogie Checklist found ...    </p>
     {%endif%} 
     
 
