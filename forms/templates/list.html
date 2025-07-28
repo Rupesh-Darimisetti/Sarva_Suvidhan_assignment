@@ -1,0 +1,83 @@
+{% extends "base.html" %} 
+  {%block title%} Bogie Checklist List{%endblock%}
+{%block content%} 
+<div class="d-flex justify-content-between mb-3">
+    <h2>Bogie Checklist List</h2>
+    <a class="btn btn-primary" href={%url 'create' %}>Create Bogie Checklist</a>
+</div>
+
+
+    {%if bogie_checksheet%}
+    {%for form in bogie_checksheet%}
+   <div class="card">
+        <h3>Bogie: {{ form.BogieNumber }}</h3>
+        <p><strong>ID:</strong> {{ form.id }}</p>
+        <p><strong>Maker &amp; Year Built:</strong> {{ form.MakerYearBuilt }}</p>
+        <p><strong>Incoming Div. &amp; Date:</strong> {{ form.IncomingDivDate }}</p>
+        <p><strong>Date of IOH:</strong> {{ form.DateofIOH }}</p>
+        <p><strong>Bogie Field Condition:</strong> {{ form.BogieFieldCodition }}</p>
+        <p><strong>Blaster:</strong> {{ form.Blaster }}</p>
+        <p><strong>Blaster Suspension Bracket:</strong> {{ form.BlasterSuspensionBracket }}</p>
+        <p><strong>Lower Spring Seat:</strong> {{ form.LowerSpringSeat }}</p>
+        <p><strong>Axle Guide:</strong> {{ form.AxleGuide }}</p>
+        <p><strong>Axle Guide Assembly:</strong> {{ form.AxleGuideAssembly }}</p>
+        <p><strong>Protective Tubes:</strong> {{ form.ProtectiveTubes }}</p>
+        <p><strong>Anchor Link:</strong> {{ form.AnchorLink }}</p>
+        <p><strong>Side Bearer:</strong> {{ form.SideBearer }}</p>
+        <p><strong>Cylinder Body &amp; Dome Cover:</strong> {{ form.CylinderBodyDomeCover }}</p>
+        <p><strong>Piston Trunnion Body:</strong> {{ form.PistonTrunnionBody }}</p>
+        <p><strong>Adjusting Tube and Screw:</strong> {{ form.AdjustingTubeandScrew }}</p>
+        <p><strong>Plunger Spring:</strong> {{ form.PlungerSpring }}</p>
+        <p><strong>Tree Bolt Hex Nut:</strong> {{ form.TreeBoltHexNut }}</p>
+        <p><strong>Pawl and Pawl Spring:</strong> {{ form.PawlandPawlSpring }}</p>
+        <p><strong>Dust Excluder:</strong> {{ form.DustExcluder }}</p>
+        <p><strong>Deflict of Components:</strong> {{ form.DeflictOfComponents }}</p>
+    
+        <p>
+            <a href="{%url 'update' bogie.pk%}" class="btn btn-success btn-sm">Edit</a>
+            <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal" data-id="{{bogie.pk}}">Delete</button>
+        </p>
+
+      </div>
+     {%endfor%}
+     {%else%} 
+    <p>
+    <td colspan="6"class="text-center">No Bogie Checklist found ...</td>
+    </p>
+    {%endif%} 
+    
+
+  <!-- Modal -->
+  <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="deleteModalLabel">Confirm Delete</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Are you sure you want to delte this Bogie Checklist?
+        </div>
+        <div class="modal-footer">
+            <form method="POST" id="deleteForm">
+                {%csrf_token%}
+                <button type="submit" class="btn btn-danger">Yes, Delete</button>
+            </form>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    const deleteModal = document.getElementById('deleteModal');
+    deleteModal.addEventListener('show.bs.modal', function(event){
+        const button = event.relatedTarget;
+        const employeeId = button.getAttribute('data-id')
+        const deleteForm = document.getElementById('deleteForm');
+        deleteForm.action = `/delete/${employeeId}/`;
+    })
+  </script>
+ </table>
+
+  
+ {%endblock%}
